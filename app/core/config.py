@@ -5,7 +5,7 @@ load_dotenv()
 
 # CORS 및 네트워크 설정
 ALLOWED_ORIGINS = [
-    "https://integrationschedulerproject.github.io",  # GitHub Pages 주소
+    "https://clonekeep.github.io",                    # GitHub Pages 주소
     "http://localhost:8081",                          # 로컬 테스트용 (FastAPI)
 ]
 
