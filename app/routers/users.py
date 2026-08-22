@@ -18,16 +18,16 @@ def create_user(payload: UserCreate, db: Session = Depends(get_db)):
     return user_service.register_user(db=db, payload=payload)
 
 
-@router.get("/{uid}", response_model=UserResponse,
-            summary="유저 정보 단건 조회", description="유저 ID(UUID)를 기반으로 특정 사용자의 프로필 정보를 조회합니다.")
-def read_user(uid: UUID, db: Session = Depends(get_db)):
-    return user_service.get_user_profile(db=db, uid=uid)
-
-
 @router.post("/login", response_model=Token,
             summary="가입 유저 로그인", description="가입 회원의 아이디와 비밀번호를 확인하고 토큰을 발급합니다.")
 def user_login(login_data: UserLogin, db: Session = Depends(get_db)):
     return user_service.user_login(db=db, login_data=login_data)
+
+
+@router.get("/{uid}", response_model=UserResponse,
+            summary="유저 정보 단건 조회", description="유저 ID(UUID)를 기반으로 특정 사용자의 프로필 정보를 조회합니다.")
+def read_user(uid: UUID, db: Session = Depends(get_db)):
+    return user_service.get_user_profile(db=db, uid=uid)
 
 
 @router.post("/refresh", response_model=Token,
